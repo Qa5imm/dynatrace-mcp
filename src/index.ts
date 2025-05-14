@@ -321,7 +321,7 @@ const main = async () => {
 
   tool(
     "get_logs_for_entity",
-    "Get Logs for a monitored entity based on name of the entity on Dynatrace",
+    "Get Logs for a monitored entity based on name of the entity on Dynatrace with the attributes (fields timestamp, content, loglevel, careem_domain, city_id, cluster_id, domain, error, headers.http_host, host, lat, lng, meta, method, span_id, url, user_id)",
     {
       entityName: z.string().optional()
     },
@@ -329,8 +329,7 @@ const main = async () => {
       const logs = await getLogsForEntity(dtClient, entityName);
 
       return `Logs:\n${JSON.stringify(logs)}`;
-    }
-  )
+    })
 
   tool(
     "verify_dql",
@@ -346,7 +345,7 @@ const main = async () => {
 
   tool(
     "execute_dql",
-    "Get Logs, Metrics, Spans, Events from Dynatrace by executing a DQL statement. Please use verify_dql tool before you execute a DQL statement.",
+    "Get Logs, Metrics (we use timeseries for metrics), Spans, Events from Dynatrace by executing a DQL statement. Please use verify_dql tool before you execute a DQL statement.",
     {
       dqlStatement: z.string()
     },
