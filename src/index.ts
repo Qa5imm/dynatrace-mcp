@@ -328,7 +328,7 @@ const main = async () => {
     async ({entityName}) => {
       const logs = await getLogsForEntity(dtClient, entityName);
 
-      return `Logs:\n${JSON.stringify(logs?.map(logLine => logLine?logLine.content:'Empty log'))}`;
+      return `Logs:\n${JSON.stringify(logs)}`;
     }
   )
 
